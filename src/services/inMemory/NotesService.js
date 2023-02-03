@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 const { nanoid } = require('nanoid');
 
 class NotesService {
@@ -5,7 +6,6 @@ class NotesService {
     this._notes = [];
   }
 
-  //  Fungsi CRUD
   addNote({ title, body, tags }) {
     const id = nanoid(16);
     const createdAt = new Date().toISOString();
@@ -63,11 +63,9 @@ class NotesService {
 
   deleteNoteById(id) {
     const index = this._notes.findIndex((note) => note.id === id);
-
     if (index === -1) {
       throw new Error('Catatan gagal dihapus. Id tidak ditemukan');
     }
-
     this._notes.splice(index, 1);
   }
 }
